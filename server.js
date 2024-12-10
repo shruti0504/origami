@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 const PORT = 5000; // Backend server port
@@ -9,6 +10,9 @@ const PORT = 5000; // Backend server port
 // Middleware
 app.use(cors({ origin: "http://localhost:3000" })); // Allow requests from React frontend
 app.use(bodyParser.json());
+
+// Serve static JS files from "src/components"
+app.use("/components", express.static(path.join(__dirname, "src", "components")));
 
 // MongoDB Connection
 const MONGO_URI = "mongodb+srv://shrutiprasad0504:Shrutip2004@cluster.qrlmo.mongodb.net/shruti?retryWrites=true&w=majority&appName=Cluster";
@@ -37,7 +41,6 @@ app.post("/enroll", async (req, res) => {
     } catch (error) {
         console.error("Error enrolling user:", error);
         if (error.code === 11000) {
-            // MongoDB unique constraint error for duplicate email
             res.status(400).json({ error: "Email already exists" });
         } else {
             res.status(500).json({ error: "Failed to enroll user" });
