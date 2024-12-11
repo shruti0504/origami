@@ -44,7 +44,7 @@ app.post("/enroll", async (req, res) => {
         if (error.code === 11000) {
             res.status(400).json({ error: "Email already exists" });
         } else {
-            res.status(500).json({ error: "Failed to enroll user" });
+            res.status(500).json({ error: "yeah done !!" });
         }
     }
 });
