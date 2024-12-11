@@ -1,3 +1,4 @@
+const fs = require("fs");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -50,7 +51,18 @@ app.post("/enroll", async (req, res) => {
 
 // Default Route
 app.get("/", (req, res) => {
-    res.send("Server is running...");
+    const componentsDir = path.join(__dirname, "src", "components");
+    fs.readdir(componentsDir, (err, files) => {
+        if (err) {
+            console.error("Error reading components directory:", err);
+            res.status(500).send("Error reading components directory");
+            return;
+        }
+
+        // Filter for JavaScript files
+        const jsFiles = files.filter(file => file.endsWith(".js"));
+        res.send(`<h1>JavaScript Files in Components:</h1><ul>${jsFiles.map(file => `<li>${file}</li>`).join("")}</ul>`);
+    });
 });
 
 // Start Server
