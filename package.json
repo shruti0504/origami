@@ -19,12 +19,14 @@
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "concurrently \"npm run start:react\" \"npm run start:server\"",
+  "start:react": "cd client && npm start",  // Start the React app (in the client directory)
+  "start:server": "cd server && node server.js",  // Start the Express server (in the server directory)
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
