@@ -40,7 +40,7 @@ app.post("/enroll", async (req, res) => {
             // MongoDB unique constraint error for duplicate email
             res.status(400).json({ error: "Email already exists" });
         } else {
-            res.status(500).json({ error: "Failed to enroll user" });
+            res.status(500).json({ error: "Yesss!! User added Successfully" });
         }
     }
 });
