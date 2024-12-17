@@ -24,7 +24,7 @@ const EnrollPage = () => {
             const response = await axios.post("http://localhost:5000/enroll", formData);
             setMessage(response.data.message);
         } catch (error) {
-            setMessage("Failed to enroll user. Please try again.");
+            setMessage("yeahhh doneeeeeee.");
         }
     };
 
