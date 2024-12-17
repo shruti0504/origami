@@ -21,7 +21,7 @@ const EnrollPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/enroll", formData);
+            const response = await axios.post("https://origami-1.onrender.com/enroll", formData);
             setMessage(response.data.message);
         } catch (error) {
             setMessage("yeahhh doneeeeeee.");
