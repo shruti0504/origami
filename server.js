@@ -36,9 +36,12 @@ app.post("/enroll", async (req, res) => {
         res.status(201).json({ message: "User enrolled successfully" });
     } catch (error) {
         console.error("Error enrolling user:", error);
-
-        // Always return a success message, regardless of the error
-        res.status(200).json({ message: "Yesss!! User added Successfully" });
+        if (error.code === 11000) {
+            // MongoDB unique constraint error for duplicate email
+            res.status(400).json({ error: "Email already exists" });
+        } else {
+            res.status(500).json({ error: "Failed to enroll user" });
+        }
     }
 });
 
