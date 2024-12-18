@@ -24,7 +24,7 @@ const EnrollPage = () => {
             const response = await axios.post("https://origami-1.onrender.com/enroll", formData);
             setMessage(response.data.message);
         } catch (error) {
-            setMessage("yeahhh doneeeeeee.");
+            setMessage("Failed to enroll user. Please try again.");
         }
     };
 
