@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000; // Use dynamic port for Render
 
 // Middleware
-app.use(cors({ origin: "https://silly-baklava-14ed5d.netlify.app/" })); // Allow requests from your Netlify frontend
+app.use(cors({ origin: "https://silly-baklava-14ed5d.netlify.app" })); // Allow requests from your Netlify frontend
 app.use(bodyParser.json());
 
 // MongoDB Connection
