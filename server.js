@@ -46,7 +46,8 @@ app.post("/enroll", async (req, res) => {
 app.get("/", (req, res) => {
     res.send("Server is running...");
 });
-
+// Handle preflight requests (OPTIONS)
+app.options('*', cors());  // Allow pre-flight OPTIONS requests
 // Start Server
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
